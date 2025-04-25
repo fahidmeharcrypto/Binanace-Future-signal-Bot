@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binance Futures Signal Bot</title>
+</head>
+<body>
+    <h1>Live Trading Signals</h1>
+    <table border="1">
+        <tr>
+            <th>Pair</th>
+            <th>Direction</th>
+            <th>Entry</th>
+            <th>Stop Loss</th>
+            <th>Take Profit</th>
+        </tr>
+        {% for signal in signals %}
+        <tr>
+            <td>{{ signal.pair }}</td>
+            <td>{{ signal.direction }}</td>
+            <td>{{ signal.entry }}</td>
+            <td>{{ signal.stop_loss }}</td>
+            <td>{{ signal.take_profit }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
