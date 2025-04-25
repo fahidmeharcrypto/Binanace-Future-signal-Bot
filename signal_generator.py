@@ -1,5 +1,12 @@
-def generate_signals():
-    return [
-        {"pair": "BTC/USDT", "direction": "Long", "entry": "64000", "stop_loss": "63000", "take_profit": "66000"},
-        {"pair": "ETH/USDT", "direction": "Short", "entry": "3200", "stop_loss": "3300", "take_profit": "3000"},
-    ]
+from flask import Flask, render_template
+import signal_generator
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    signal = signal_generator.get_signal()
+    return render_template('index.html', signal=signal)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
