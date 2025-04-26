@@ -1,12 +1,14 @@
 from flask import Flask, render_template
-import signal_generator
+from signal_generator import generate_signals
+import time
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    signal = signal_generator.get_signal()
-    return render_template('index.html', signal=signal)
+    signals = generate_signals()
+    timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+    return render_template('index.html', signals=signals, timestamp=timestamp)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
